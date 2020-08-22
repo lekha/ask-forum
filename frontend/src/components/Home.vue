@@ -1,50 +1,35 @@
 <template>
-  <div class="home">
-    <div class="header">
-      <h1>Project Name</h1>
-      <form id="search-form" role="search">
-        <input
-          id="search" type="search" placeholder="Search" aria-label="search"
-        />
-      </form>
-      <button>Log in</button>
-      <button>Register</button>
-    </div>
-    <div class="body">
-      <div class="sidebar">
-        <ul>
-          <li>Questions</li>
-          <li>Tags</li>
-          <li>Users</li>
-        </ul>
+  <base-layout>
+
+    <template v-slot:title>
+      <div class="container">
+        <h2>Questions</h2>
+        <button>Ask a question</button>
       </div>
-      <div class="content">
-        <div class="title">
-          <div class="container">
-            <h2>Questions</h2>
-            <button>Ask a question</button>
-          </div>
-          <div>{{ numQuestions.toLocaleString() }} questions</div>
-        </div>
-        <div class="article">
-          <div v-for="question in questions" :key="question.id" class="question">
-            <h3>{{ question.title }}</h3>
-            <p>{{ question.description }}</p>
-            <div v-for="tag in question.tags" :key="tag.id" class="tag">
-              #{{ tag.text }}
-            </div>
-          </div>
+      <div>{{ numQuestions.toLocaleString() }} questions</div>
+    </template>
+
+    <template v-slot:article>
+      <div v-for="question in questions" :key="question.id" class="question">
+        <h3>{{ question.title }}</h3>
+        <p>{{ question.description }}</p>
+        <div v-for="tag in question.tags" :key="tag.id" class="tag">
+          #{{ tag.text }}
         </div>
       </div>
-      <div class="sidebar">
-      </div>
-    </div>
-  </div>
+    </template>
+
+  </base-layout>
 </template>
 
 <script>
+import Base from "@/layouts/Base.vue";
+
 export default {
   name: "Home",
+  components: {
+    "base-layout": Base,
+  },
   data() {
     return {
       numQuestions: 1000,
