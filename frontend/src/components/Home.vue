@@ -36,6 +36,8 @@
           </div>
         </div>
       </div>
+      <div class="sidebar">
+      </div>
     </div>
   </div>
 </template>
