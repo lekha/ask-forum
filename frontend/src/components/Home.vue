@@ -74,3 +74,5 @@ export default {
   }
 }
 </script>
+
+<style src="@/css/home.css"></style>
