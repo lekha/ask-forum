@@ -2,7 +2,11 @@
   <div class="home">
     <div class="header">
       <h1>Project Name</h1>
-      <div class="search">Search bar</div>
+      <form id="search-form" role="search">
+        <input
+          id="search" type="search" placeholder="Search" aria-label="search"
+        />
+      </form>
       <button>Log in</button>
       <button>Register</button>
     </div>

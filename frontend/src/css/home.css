@@ -15,10 +15,14 @@ body {
   margin: 15px;
 }
 
-.header .search {
-  border: 1px solid black;
+#search-form {
   flex-grow: 1;
+}
+
+#search {
+  border: 1px solid black;
   padding: 5px;
+  width: 100%;
 }
 
 .body {
