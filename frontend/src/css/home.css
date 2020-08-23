@@ -5,13 +5,19 @@
 }
 
 .question {
+  padding: 15px 0;
+}
+
+.question + .question {
   border-top: 1px dotted black;
-  padding: 15px;
 }
 
 .tag {
   background-color: #aaaaee;
   display: inline-block;
-  margin: 5px;
   padding: 5px;
+}
+
+.tag + .tag {
+  margin-left: 5px;
 }
