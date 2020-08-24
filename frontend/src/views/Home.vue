@@ -13,9 +13,7 @@
       <div v-for="question in questions" :key="question.id" class="question">
         <h3>{{ question.title }}</h3>
         <p>{{ question.description }}</p>
-        <div v-for="tag in question.tags" :key="tag.id" class="tag">
-          #{{ tag.text }}
-        </div>
+        <tag v-for="tag in question.tags" :key="tag.id" :text="tag.text" />
       </div>
     </template>
 
@@ -24,11 +22,13 @@
 
 <script>
 import Base from "@/layouts/Base.vue";
+import Tag from "@/components/Tag.vue";
 
 export default {
   name: "Home",
   components: {
     "base-layout": Base,
+    "tag": Tag,
   },
   data() {
     return {

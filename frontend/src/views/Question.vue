@@ -11,11 +11,7 @@
 
     <template v-slot:article>
       <p>{{ description }}</p>
-      <div>
-        <div v-for="tag in tags" :key="tag.id" class="tag">
-          #{{ tag.text }}
-        </div>
-      </div>
+      <tag v-for="tag in tags" :key="tag.id" :text="tag.text" />
     </template>
 
   </base-layout>
@@ -23,11 +19,13 @@
 
 <script>
 import Base from "@/layouts/Base.vue";
+import Tag from "@/components/Tag.vue";
 
 export default {
   name: "Question",
   components: {
     "base-layout": Base,
+    "tag": Tag,
   },
   data() {
     return {
