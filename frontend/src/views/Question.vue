@@ -4,7 +4,7 @@
     <template v-slot:title>
       <div class="container">
         <h2>{{ title }}</h2>
-        <button>Ask a question</button>
+        <ask-question-button />
       </div>
       <div>Asked {{ createdDate }}</div>
     </template>
@@ -18,12 +18,14 @@
 </template>
 
 <script>
+import AskQuestionButton from "@/components/AskQuestionButton.vue";
 import Base from "@/layouts/Base.vue";
 import Tag from "@/components/Tag.vue";
 
 export default {
   name: "Question",
   components: {
+    "ask-question-button": AskQuestionButton,
     "base-layout": Base,
     "tag": Tag,
   },
