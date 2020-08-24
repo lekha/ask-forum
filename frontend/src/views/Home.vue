@@ -11,7 +11,13 @@
 
     <template v-slot:article>
       <div v-for="question in questions" :key="question.id" class="question">
-        <h3>{{ question.title }}</h3>
+        <h3>
+          <router-link
+            :to="{ name: 'Question', params: { id: question.id } }"
+          >
+            {{ question.title }}
+          </router-link>
+        </h3>
         <p>{{ question.description }}</p>
         <tag v-for="tag in question.tags" :key="tag.id" :text="tag.text" />
       </div>
