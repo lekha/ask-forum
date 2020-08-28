@@ -8,11 +8,12 @@
           id="search" type="search" placeholder="Search" aria-label="search"
         />
       </form>
-      <button>Log in</button>
+      <button @click="showLogin">Log in</button>
       <button>Register</button>
     </div>
 
     <div class="body">
+      <login-modal :isVisible="isVisibleLogin" @hideLogin="hideLogin" />
       <div class="sidebar">
         <ul>
           <li><router-link :to="{ name: 'Home' }">Questions</router-link></li>
@@ -36,8 +37,26 @@
 </template>
 
 <script>
+import LoginModal from "@/components/LoginModal.vue";
+
 export default {
   name: "Base",
+  components: {
+      "login-modal": LoginModal,
+  },
+  data() {
+    return {
+      isVisibleLogin: false,
+    }
+  },
+  methods: {
+    hideLogin() {
+      this.isVisibleLogin = false;
+    },
+    showLogin() {
+      this.isVisibleLogin = true;
+    },
+  },
 }
 </script>
 
