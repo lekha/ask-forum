@@ -13,7 +13,7 @@
     </div>
 
     <div class="body">
-      <login-modal :isVisible="isVisibleLogin" @hideLogin="hideLogin" />
+      <login-modal v-if="isVisibleLogin" @hideLogin="hideLogin" />
       <div class="sidebar">
         <ul>
           <li><router-link :to="{ name: 'Home' }">Questions</router-link></li>
