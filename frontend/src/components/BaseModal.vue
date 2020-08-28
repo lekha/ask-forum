@@ -4,7 +4,7 @@
       <transition appear name="modal">
         <div class="modal">
           <span class="modal-close" @click="hideModal">&times;</span>
-        <p>This is a login modal!</p>
+          <component :is="content" />
         </div>
       </transition>
     </div>
@@ -13,10 +13,13 @@
 
 <script>
 export default {
-  name: "LoginModal",
+  name: "BaseModal",
+  props: {
+    content: Object,
+  },
   methods: {
     hideModal() {
-      this.$emit("hideLogin");
+      this.$emit("hideModal");
     },
   },
 }

@@ -13,7 +13,7 @@
     </div>
 
     <div class="body">
-      <login-modal v-if="isVisibleLogin" @hideLogin="hideLogin" />
+      <base-modal v-if="isVisibleLogin" :content="loginForm" @hideModal="hideLogin" />
       <div class="sidebar">
         <ul>
           <li><router-link :to="{ name: 'Home' }">Questions</router-link></li>
@@ -37,16 +37,18 @@
 </template>
 
 <script>
-import LoginModal from "@/components/LoginModal.vue";
+import BaseModal from "@/components/BaseModal.vue";
+import LoginForm from "@/components/LoginForm.vue";
 
 export default {
   name: "Base",
   components: {
-      "login-modal": LoginModal,
+      "base-modal": BaseModal,
   },
   data() {
     return {
       isVisibleLogin: false,
+      loginForm: LoginForm,
     }
   },
   methods: {
