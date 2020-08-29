@@ -8,8 +8,14 @@
           id="search" type="search" placeholder="Search" aria-label="search"
         />
       </form>
-      <button @click="showLogin">Log in</button>
-      <button>Register</button>
+      <template v-if="role">
+        <div>{{ role }}</div>
+        <button @click="logout">Log out</button>
+      </template>
+      <template v-else>
+        <button @click="showLogin">Log in</button>
+        <button>Register</button>
+      </template>
     </div>
 
     <div class="body">
@@ -51,9 +57,20 @@ export default {
       loginForm: LoginForm,
     }
   },
+  computed: {
+    role() {
+      var user = this.$cookies.get("user");
+      return (user ? user.role : null);
+    },
+  },
   methods: {
     hideLogin() {
       this.isVisibleLogin = false;
+    },
+    logout() {
+      console.log("logging out");
+      this.$cookies.remove("user");
+      this.$router.go();
     },
     showLogin() {
       this.isVisibleLogin = true;
