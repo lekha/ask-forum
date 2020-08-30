@@ -31,6 +31,7 @@ export default {
   },
   props: {
     id: Number,
+    shortDescription: String,
   },
   data() {
     return {
@@ -53,6 +54,31 @@ export default {
     },
     title() {
       return "Question " + this.id + " title";
+    },
+  },
+  created() {
+    this.addShortDescriptionToURL();
+  },
+  methods: {
+    addShortDescriptionToURL() {
+      const maxURLLength = 300;  // arbitrarily chosen
+      const expectedDescription =
+        this.convertToKebabCase(this.title).substring(0, maxURLLength);
+      if (this.shortDescription != expectedDescription) {
+        this.$router.replace({
+          name: "QuestionWithFullURL",
+          params: { id: this.id, shortDescription: expectedDescription },
+        });
+      }
+    },
+    convertToKebabCase(inputString) {
+      // Shamelessly borrowed and adapted from here:
+      // https://gist.github.com/thevangelist/8ff91bac947018c9f3bfaad6487fa149
+      return inputString
+        .replace(/([a-z])([A-Z])/g, "$1-$2")  // prepend hyphen to capital letters
+        .replace(/[^\w\s-]+/g, "")            // remove "special" characters
+        .replace(/[\s_]+/g, "-")              // spaces/underscores --> hyphens
+        .toLowerCase()                        // lower case
     },
   },
 }

@@ -21,6 +21,19 @@ const routes = [
       const id = Number.parseInt(route.params.id, 10);
       return {
         id: Number.isNaN(id) ? 0 : id,
+        shortDescription: "",
+      }
+    },
+  },
+  {
+    path: "/questions/:id/:shortDescription",
+    component: Question,
+    name: "QuestionWithFullURL",
+    props: (route) => {
+      const id = Number.parseInt(route.params.id, 10);
+      return {
+        id: Number.isNaN(id) ? 0 : id,
+        shortDescription: route.params.shortDescription,
       }
     },
   },
