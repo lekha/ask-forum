@@ -1,6 +1,6 @@
 <template>
   <transition appear name="modal">
-    <div class="modal-background">
+    <div class="modal-background" @click="hideModal">
       <transition appear name="modal">
         <div class="modal">
           <span class="modal-close" @click="hideModal">&times;</span>
@@ -18,8 +18,10 @@ export default {
     content: Object,
   },
   methods: {
-    hideModal() {
-      this.$emit("hideModal");
+    hideModal(event) {
+      if (event.currentTarget == event.target) {
+        this.$emit("hideModal");
+      }
     },
   },
 }
