@@ -29,10 +29,12 @@ export default {
     "base-layout": Base,
     "tag": Tag,
   },
+  props: {
+    id: Number,
+  },
   data() {
     return {
       createdDate: "2020-08-11",
-      description: "Question 1 description",
       tags: [
         {
           id: 0,
@@ -43,8 +45,15 @@ export default {
           text: "tag2",
         },
       ],
-      title: "Question 1 title",
     }
-  }
+  },
+  computed: {
+    description() {
+      return "Question " + this.id + " description";
+    },
+    title() {
+      return "Question " + this.id + " title";
+    },
+  },
 }
 </script>
