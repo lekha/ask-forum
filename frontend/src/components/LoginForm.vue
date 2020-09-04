@@ -11,20 +11,33 @@
       </legend>
       <div>
         <input
-          type="radio" v-model="role" id="login-role-user" value="user" required
+          id="login-role-user"
+          v-model="role"
+          type="radio"
+          name="login-role"
+          value="user"
+          required
         />
         <label for="login-role-user">User</label>
       </div>
       <div>
         <input
-          type="radio" v-model="role" id="login-role-editor" value="editor"
+          id="login-role-editor"
+          v-model="role"
+          name="login-role"
+          type="radio"
+          value="editor"
           required
         />
         <label for="login-role-editor">Editor</label>
       </div>
       <div>
         <input
-          type="radio" v-model="role" id="login-role-admin" value="admin"
+          id="login-role-admin"
+          v-model="role"
+          name="login-role"
+          type="radio"
+          value="admin"
           required
         />
         <label for="login-role-admin">Admin</label>
