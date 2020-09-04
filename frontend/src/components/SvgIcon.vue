@@ -20,8 +20,10 @@ export default {
 
 <style>
 svg.icon {
+  fill: currentColor;
   height: 1em;
   margin: 0;
+  stroke: currentColor;
   vertical-align: middle;
   width: 1em;
 }

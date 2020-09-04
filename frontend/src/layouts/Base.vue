@@ -5,8 +5,9 @@
       <h1>Project Name</h1>
       <form id="search-form" role="search">
         <input
-          id="search" type="search" placeholder="Search" aria-label="search"
+          id="search-bar" type="search" placeholder="Search" aria-label="search"
         />
+        <button id="search-button"><svg-icon icon="search" /></button>
       </form>
       <template v-if="role">
         <div>{{ role }}</div>

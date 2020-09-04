@@ -33,14 +33,25 @@ h2 {
 }
 
 #search-form {
+  align-items: stretch;
+  display: flex;
   flex-grow: 1;
+  justify-content: flex-end;
 }
 
-#search {
+#search-bar {
   border: 1px solid var(--primary-dark);
-  border-radius: 3px;
+  border-right: none;
+  border-radius: 3px 0 0 3px;
   padding: 5px;
-  width: 100%;
+  width: 75%;
+}
+
+#search-button {
+  border: 1px solid var(--primary-dark);
+  border-left: none;
+  border-radius: 0 3px 3px 0;
+  padding: 7px 12px; /* reduce button padding to account for border */
 }
 
 .body {
