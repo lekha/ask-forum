@@ -15,9 +15,10 @@ export default {
 
 <style>
 .tag {
-  background-color: #aaaaee;
+  background-color: var(--primary-lighter);
+  border-radius: 3px;
   display: inline-block;
-  padding: 5px;
+  padding: 4px 8px;
 }
 
 .tag + .tag {

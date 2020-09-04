@@ -5,9 +5,13 @@
 }
 
 .question {
-  padding: 15px 0;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px var(--primary-neutral);
+  margin: 15px 0;
+  padding: 15px;
 }
 
-.question + .question {
-  border-top: 1px dotted black;
+.question > *:first-child {
+  margin-top: 0;
 }

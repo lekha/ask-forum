@@ -10,8 +10,10 @@
     </template>
 
     <template v-slot:article>
-      <p>{{ description }}</p>
-      <tag v-for="tag in tags" :key="tag.id" :text="tag.text" />
+      <div class="question">
+        <p>{{ description }}</p>
+        <tag v-for="tag in tags" :key="tag.id" :text="tag.text" />
+      </div>
     </template>
 
   </base-layout>
