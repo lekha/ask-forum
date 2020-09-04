@@ -30,7 +30,7 @@
         <label for="login-role-admin">Admin</label>
       </div>
     </fieldset>
-    <button type="submit" :disabled="hasSubmitted">Login</button>
+    <button type="submit" :disabled="hasSubmitted">Log in</button>
   </form>
 </template>
 
