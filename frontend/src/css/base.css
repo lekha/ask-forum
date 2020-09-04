@@ -54,6 +54,20 @@ h2 {
   padding: 7px 12px; /* reduce button padding to account for border */
 }
 
+#profile-button {
+  border-radius: 50%;
+  height: 1em;
+  padding: 17px;
+  overflow: hidden;
+  width: 1em;
+}
+
+#profile-button > .icon {
+  height: 31px;
+  width: 31px;
+  transform: translate(-14px, -12px);
+}
+
 .body {
   position: relative;
   display: flex;

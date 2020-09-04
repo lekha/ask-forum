@@ -12,6 +12,7 @@
       <template v-if="role">
         <div>{{ role }}</div>
         <button @click="logout">Log out</button>
+        <button id="profile-button"><svg-icon icon="profile" /></button>
       </template>
       <template v-else>
         <button @click="showLogin">Log in</button>
