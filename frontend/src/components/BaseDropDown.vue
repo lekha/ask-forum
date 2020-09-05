@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/css/_variables.scss";
+
 .drop-down {
   position: relative;
 }
@@ -58,7 +60,7 @@ export default {
 
   background-color: #fff;
   border-radius: 3px;
-  box-shadow: 0 2px 5px var(--primary-neutral);
+  box-shadow: 0 2px 5px $primary-neutral;
   margin-top: 15px;
   padding: 15px;
 }

@@ -74,4 +74,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="@/css/home.scss"></style>
+<style lang="scss">
+@import "@/css/_variables.scss";
+@import "@/css/home.scss";
+</style>

@@ -1,16 +1,5 @@
-:root {
-  --primary-pale: #fafafa;
-  --primary-lightest: #f3f3f3;
-  --primary-lighter: #dcdcdc;
-  --primary-light: #d3d3d3;
-  --primary-neutral: #c0c0c0;
-  --primary-dark: #a9a9a9;
-  --primary-darker: #808080;
-  --primary-darkest: #696969;
-}
-
 body {
-  background-color: var(--primary-pale);
+  background-color: $primary-pale;
   margin: 0;
   padding: 0;
 }
@@ -21,8 +10,8 @@ h2 {
 
 .header {
   align-items: center;
-  background-color: var(--primary-lighter);
-  box-shadow: 0 5px 5px -5px var(--primary-darker);
+  background-color: $primary-lighter;
+  box-shadow: 0 5px 5px -5px $primary-darker;
   display: flex;
   padding: 0 15px;
 }
@@ -40,7 +29,7 @@ h2 {
 }
 
 #search-bar {
-  border: 1px solid var(--primary-dark);
+  border: 1px solid $primary-dark;
   border-right: none;
   border-radius: 3px 0 0 3px;
   padding: 5px;
@@ -48,7 +37,7 @@ h2 {
 }
 
 #search-button {
-  border: 1px solid var(--primary-dark);
+  border: 1px solid $primary-dark;
   border-left: none;
   border-radius: 0 3px 3px 0;
   padding: 7px 12px; /* reduce button padding to account for border */
@@ -111,29 +100,29 @@ h2 {
 }
 
 a {
-  color: var(--primary-darkest);
+  color: $primary-darkest;
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--primary-dark);
+  color: $primary-dark;
 }
 
 button {
-  background-color: var(--primary-darker);
+  background-color: $primary-darker;
   border: none;
   border-radius: 3px;
-  color: var(--primary-lighter);
+  color: $primary-lighter;
   padding: 8px 12px;
 }
 
 button:focus, button:hover {
-  background-color: var(--primary-dark);
-  box-shadow: -1px 1px 1px var(--primary-neutral);
+  background-color: $primary-dark;
+  box-shadow: -1px 1px 1px $primary-neutral;
   cursor: pointer;
   outline: none;
 }
 
 button:active {
-  background-color: var(--primary-darkest);
+  background-color: $primary-darkest;
 }

@@ -14,8 +14,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/css/_variables.scss";
+
 .tag {
-  background-color: var(--primary-lighter);
+  background-color: $primary-lighter;
   border-radius: 3px;
   display: inline-block;
   padding: 4px 8px;
