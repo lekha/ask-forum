@@ -77,4 +77,4 @@ export default {
 }
 </script>
 
-<style src="@/css/base.css"></style>
+<style lang="scss" src="@/css/base.scss"></style>

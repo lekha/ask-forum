@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .modal-background {
   position: absolute;
   z-index: 1;

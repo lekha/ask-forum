@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .tag {
   background-color: var(--primary-lighter);
   border-radius: 3px;
