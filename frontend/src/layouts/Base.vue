@@ -9,11 +9,11 @@
         />
         <button id="search-button"><svg-icon icon="search" /></button>
       </form>
-      <template v-if="role">
-        <div>{{ role }}</div>
-        <button @click="logout">Log out</button>
-        <button id="profile-button"><svg-icon icon="profile" /></button>
+
+      <template v-if="user">
+        <user-profile-menu />
       </template>
+
       <template v-else>
         <button @click="showLogin">Log in</button>
         <button>Register</button>
@@ -47,11 +47,13 @@
 <script>
 import BaseModal from "@/components/BaseModal.vue";
 import LoginForm from "@/components/LoginForm.vue";
+import UserProfileMenu from "@/components/UserProfileMenu.vue";
 
 export default {
   name: "Base",
   components: {
-      "base-modal": BaseModal,
+    "base-modal": BaseModal,
+    "user-profile-menu": UserProfileMenu,
   },
   data() {
     return {
@@ -60,19 +62,13 @@ export default {
     }
   },
   computed: {
-    role() {
-      var user = this.$cookies.get("user");
-      return (user ? user.role : null);
+    user() {
+      return this.$cookies.get("user");
     },
   },
   methods: {
     hideLogin() {
       this.isVisibleLogin = false;
-    },
-    logout() {
-      console.log("logging out");
-      this.$cookies.remove("user");
-      this.$router.go();
     },
     showLogin() {
       this.isVisibleLogin = true;
