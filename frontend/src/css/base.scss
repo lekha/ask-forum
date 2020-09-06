@@ -121,6 +121,8 @@ h2 {
 }
 
 .sidebar {
+  padding-top: 30px;
+
   @include gutters(8, $right-only: true);
   width: grid-width(2, 8);
 
@@ -131,12 +133,24 @@ h2 {
 
 .sidebar > ul {
   list-style-type: none;
-  margin: 0 15px;
+  margin: 0;
   padding: 0;
-}
 
-.sidebar ul li + li {
-  margin: 15px 0;
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  li > * {
+    display: block;
+    padding: 15px 30px;
+  }
+
+  .router-link-exact-active {
+    background-color: $primary-light;
+    color: #000;
+    display: block;
+  }
 }
 
 .content {

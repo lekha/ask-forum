@@ -29,8 +29,8 @@
       <div class="sidebar">
         <ul>
           <li><router-link :to="{ name: 'Home' }">Questions</router-link></li>
-          <li>Tags</li>
-          <li>Users</li>
+          <li><a>Tags</a></li>
+          <li><a>Users</a></li>
         </ul>
       </div>
       <div class="content">
