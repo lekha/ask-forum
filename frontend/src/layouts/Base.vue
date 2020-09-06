@@ -1,5 +1,10 @@
 <template>
   <div class="base">
+    <base-modal
+      v-if="isVisibleLogin"
+      :content="loginForm"
+      @hideModal="hideLogin"
+    />
 
     <div class="header">
       <h1>Project Name</h1>
@@ -21,7 +26,6 @@
     </div>
 
     <div class="body">
-      <base-modal v-if="isVisibleLogin" :content="loginForm" @hideModal="hideLogin" />
       <div class="sidebar">
         <ul>
           <li><router-link :to="{ name: 'Home' }">Questions</router-link></li>
@@ -36,8 +40,6 @@
         <div class="article">
           <slot name="article"></slot>
         </div>
-      </div>
-      <div class="sidebar">
       </div>
     </div>
 

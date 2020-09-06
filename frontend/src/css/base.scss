@@ -72,12 +72,14 @@ h2 {
 .body {
   position: relative;
   display: flex;
-  justify-content: center;
+  margin-left: side-margin(1, 12);
+  margin-right: side-margin(3, 12);
 }
 
 .sidebar {
+  @include gutters(8);
+  flex-grow: 2;
   margin-top: 30px;  /* equals .title margin-top */
-  width: 150px;
 }
 
 .sidebar > ul {
@@ -91,7 +93,8 @@ h2 {
 }
 
 .content {
-  width: 500px;
+  @include gutters(8);
+  flex-grow: 6;
 }
 
 .title {

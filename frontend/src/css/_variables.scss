@@ -1,3 +1,4 @@
+// Colors
 $primary-pale: #fafafa;
 $primary-lightest: #f3f3f3;
 $primary-lighter: #dcdcdc;
@@ -6,3 +7,46 @@ $primary-neutral: #c0c0c0;
 $primary-dark: #a9a9a9;
 $primary-darker: #808080;
 $primary-darkest: #696969;
+
+
+// Grid layout
+$column-to-gutter-scale: 5;
+$side-margin-min-width: 5%;
+
+
+// Percentage width for a given number of columns in a grid layout
+@function grid-width($columns, $total-columns) {
+  $denominator: ($total-columns * $column-to-gutter-scale) + ($total-columns - 1);
+  $numerator: ($columns * $column-to-gutter-scale) + ($columns - 1);
+  @return percentage($numerator / $denominator);
+}
+
+
+// Percentage width of one gutter in a grid layout
+@function gutter-width($total-columns) {
+  $denominator: ($total-columns * $column-to-gutter-scale) + ($total-columns - 1);
+  @return percentage(1 / $denominator);
+}
+
+
+// Percentage width for the side margin in a grid layout
+//
+// Columns should only be passed in if they should be consumed by the side
+// margin. This is especially useful when a layout is not symmetrical.
+@function side-margin($columns: 0, $total-columns: 0) {
+  @if $columns != 0 {
+    $column: grid-width($columns, $total-columns);
+    $gutter: gutter-width($total-columns) / 2;
+    @return $side-margin-min-width + $column + $gutter;
+  }
+  @else {
+    @return $side-margin-min-width;
+  }
+}
+
+
+// Add gutters to the element
+@mixin gutters($total-columns) {
+  margin-left: gutter-width($total-columns) / 2;
+  margin-right: gutter-width($total-columns) / 2;
+}
