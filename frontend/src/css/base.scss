@@ -72,14 +72,23 @@ h2 {
 .body {
   position: relative;
   display: flex;
-  margin-left: side-margin(1, 12);
-  margin-right: side-margin(3, 12);
+  margin-left: side-margin();
+  margin-right: side-margin();
+
+  @include respond-to(desktop) {
+    margin-left: side-margin(1, 12);
+    margin-right: side-margin(3, 12);
+  }
 }
 
 .sidebar {
   @include gutters(8);
   flex-grow: 2;
   margin-top: 30px;  /* equals .title margin-top */
+
+  @include respond-to(phone) {
+    display: none;
+  }
 }
 
 .sidebar > ul {
@@ -95,6 +104,10 @@ h2 {
 .content {
   @include gutters(8);
   flex-grow: 6;
+
+  @include respond-to(phone) {
+    margin: 0;
+  }
 }
 
 .title {
