@@ -12,19 +12,26 @@ $primary-darkest: #696969;
 // Grid layout
 $column-to-gutter-scale: 5;
 $side-margin-min-width: 5%;
+$page-to-body-scale: (100% - (2 * $side-margin-min-width)) / 100%;
+
+
+// Expand columns to include internal gutters and report size in "gutter units"
+@function with-gutters($columns) {
+  @return ($columns * $column-to-gutter-scale) + ($columns - 1);
+}
 
 
 // Percentage width for a given number of columns in a grid layout
 @function grid-width($columns, $total-columns) {
-  $denominator: ($total-columns * $column-to-gutter-scale) + ($total-columns - 1);
-  $numerator: ($columns * $column-to-gutter-scale) + ($columns - 1);
+  $denominator: with-gutters($total-columns);
+  $numerator: with-gutters($columns);
   @return percentage($numerator / $denominator);
 }
 
 
 // Percentage width of one gutter in a grid layout
 @function gutter-width($total-columns) {
-  $denominator: ($total-columns * $column-to-gutter-scale) + ($total-columns - 1);
+  $denominator: with-gutters($total-columns);
   @return percentage(1 / $denominator);
 }
 
@@ -36,8 +43,8 @@ $side-margin-min-width: 5%;
 @function side-margin($columns: 0, $total-columns: 0) {
   @if $columns != 0 {
     $column: grid-width($columns, $total-columns);
-    $gutter: gutter-width($total-columns) / 2;
-    @return $side-margin-min-width + $column + $gutter;
+    $gutter: gutter-width($total-columns);
+    @return $side-margin-min-width + ($column + $gutter) * $page-to-body-scale;
   }
   @else {
     @return $side-margin-min-width;
@@ -46,9 +53,19 @@ $side-margin-min-width: 5%;
 
 
 // Add gutters to the element
-@mixin gutters($total-columns) {
-  margin-left: gutter-width($total-columns) / 2;
-  margin-right: gutter-width($total-columns) / 2;
+@mixin gutters($columns, $scale: 1, $left-only: false, $right-only: false) {
+  $scaled-half-gutter-width: gutter-width($columns) * $scale / 2;
+
+  @if $left-only {
+    margin-left: $scaled-half-gutter-width;
+  }
+  @else if $right-only {
+    margin-right: $scaled-half-gutter-width;
+  }
+  @else {
+    margin-left: $scaled-half-gutter-width;
+    margin-right: $scaled-half-gutter-width;
+  }
 }
 
 

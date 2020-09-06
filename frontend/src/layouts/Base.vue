@@ -6,8 +6,8 @@
       @hideModal="hideLogin"
     />
 
-    <div class="header">
-      <h1>Project Name</h1>
+    <div class="header-wrapper"><div class="header">
+      <h1 id="header-title">Project Name</h1>
       <form id="search-form" role="search">
         <input
           id="search-bar" type="search" placeholder="Search" aria-label="search"
@@ -15,15 +15,15 @@
         <button id="search-button"><svg-icon icon="search" /></button>
       </form>
 
-      <template v-if="user">
+      <div v-if="user" id="header-buttons">
         <user-profile-menu />
-      </template>
+      </div>
 
-      <template v-else>
+      <div v-else id="header-buttons">
         <button @click="showLogin">Log in</button>
         <button>Register</button>
-      </template>
-    </div>
+      </div>
+    </div></div>
 
     <div class="body">
       <div class="sidebar">

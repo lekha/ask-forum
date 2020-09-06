@@ -8,32 +8,57 @@ h2 {
   margin: 0;
 }
 
-.header {
-  align-items: center;
+.header-wrapper {
   background-color: $primary-lighter;
   box-shadow: 0 5px 5px -5px $primary-darker;
+}
+
+.header {
+  align-items: center;
   display: flex;
-  padding: 0 15px;
+  margin: 0 $side-margin-min-width;
 }
 
 .header > * {
   display: inline-block;
-  margin: 15px;
+  margin: 15px 0;
+}
+
+#header-title {
+  // TODO: handle phone case
+  @include respond-to(tablet) {
+    @include gutters(8, $right-only: true);
+    width: grid-width(2, 8);
+  }
+
+  @include respond-to(desktop) {
+    @include gutters(12, $right-only: true);
+    width: grid-width(3, 12);
+  }
 }
 
 #search-form {
   align-items: stretch;
   display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
+
+  // TODO: handle phone case
+  @include respond-to(tablet) {
+    @include gutters(8);
+    flex-grow: 1;
+  }
+
+  @include respond-to(desktop) {
+    @include gutters(12);
+    width: grid-width(6, 12);
+  }
 }
 
 #search-bar {
   border: 1px solid $primary-dark;
   border-right: none;
   border-radius: 3px 0 0 3px;
+  flex-grow: 1;
   padding: 5px;
-  width: 75%;
 }
 
 #search-button {
@@ -41,6 +66,20 @@ h2 {
   border-left: none;
   border-radius: 0 3px 3px 0;
   padding: 7px 12px; /* reduce button padding to account for border */
+}
+
+#header-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  // TODO: handle phone case
+  @include respond-to(tablet) {
+    @include gutters(8, $left-only: true);
+  }
+
+  @include respond-to(desktop) {
+    flex-grow: 1;
+  }
 }
 
 #profile-button {
@@ -82,9 +121,8 @@ h2 {
 }
 
 .sidebar {
-  @include gutters(8);
-  flex-grow: 2;
-  margin-top: 30px;  /* equals .title margin-top */
+  @include gutters(8, $right-only: true);
+  width: grid-width(2, 8);
 
   @include respond-to(phone) {
     display: none;
@@ -102,11 +140,12 @@ h2 {
 }
 
 .content {
-  @include gutters(8);
-  flex-grow: 6;
+  @include gutters(8, $left-only: true);
+  width: grid-width(6, 8);
 
   @include respond-to(phone) {
-    margin: 0;
+    margin: 0;  /* remove gutters */
+    width: 100%;
   }
 }
 
