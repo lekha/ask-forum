@@ -26,20 +26,7 @@
     </div></div>
 
     <div class="body">
-      <div class="sidebar">
-        <ul>
-          <li>
-            <router-link
-              :to="{ name: 'Home' }"
-              :class="{ exact: $route.name === 'Home'}"
-            >
-              Questions
-            </router-link>
-          </li>
-          <li><a>Tags</a></li>
-          <li><a>Users</a></li>
-        </ul>
-      </div>
+      <navigation-bar />
       <div class="content">
         <div class="title">
           <slot name="title"></slot>
@@ -56,12 +43,14 @@
 <script>
 import BaseModal from "@/components/BaseModal.vue";
 import LoginForm from "@/components/LoginForm.vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 import UserProfileMenu from "@/components/UserProfileMenu.vue";
 
 export default {
   name: "Base",
   components: {
     "base-modal": BaseModal,
+    "navigation-bar": NavigationBar,
     "user-profile-menu": UserProfileMenu,
   },
   data() {
