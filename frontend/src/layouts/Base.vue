@@ -41,11 +41,11 @@
 </template>
 
 <script>
-import BaseModal from "@/components/BaseModal.vue";
-import LoginForm from "@/components/LoginForm.vue";
-import NavigationBar from "@/components/NavigationBar.vue";
+import BaseModal from "@/components/BaseModal";
+import LoginForm from "@/components/LoginForm";
+import NavigationBar from "@/components/NavigationBar";
 import UserMixin from "@/mixins/user-mixin";
-import UserProfileMenu from "@/components/UserProfileMenu.vue";
+import UserProfileMenu from "@/components/UserProfileMenu";
 
 export default {
   name: "Base",

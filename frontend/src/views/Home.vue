@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import AskQuestionButton from "@/components/AskQuestionButton.vue";
-import Base from "@/layouts/Base.vue";
-import Tag from "@/components/Tag.vue";
+import AskQuestionButton from "@/components/AskQuestionButton";
+import Base from "@/layouts/Base";
+import Tag from "@/components/Tag";
 
 export default {
   name: "Home",

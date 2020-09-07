@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BaseDropDown from "@/components/BaseDropDown.vue";
+import BaseDropDown from "@/components/BaseDropDown";
 import UserMixin from "@/mixins/user-mixin";
 
 export default {

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SvgSprite from "@/components/SvgSprite.vue";
+import SvgSprite from "@/components/SvgSprite";
 
 export default {
   name: "App",

@@ -1,9 +1,9 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
-import Answer from "@/views/Answer.vue"
-import Answers from "@/views/Answers.vue"
-import Home from "@/views/Home.vue"
-import Question from "@/views/Question.vue"
+import Answer from "@/views/Answer";
+import Answers from "@/views/Answers";
+import Home from "@/views/Home";
+import Question from "@/views/Question";
+import Vue from "vue";
+import VueRouter from "vue-router";
 
 
 Vue.use(VueRouter)

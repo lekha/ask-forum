@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Base from "@/layouts/Base.vue";
+import Base from "@/layouts/Base";
 
 export default {
   name: "Answer",
