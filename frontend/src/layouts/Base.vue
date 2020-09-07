@@ -1,8 +1,13 @@
 <template>
   <div class="base">
+    <base-modal
+      v-if="isVisibleLogin"
+      :content="loginForm"
+      @hideModal="hideLogin"
+    />
 
-    <div class="header">
-      <h1>Project Name</h1>
+    <div class="header-wrapper"><div class="header">
+      <h1 id="header-title">Project Name</h1>
       <form id="search-form" role="search">
         <input
           id="search-bar" type="search" placeholder="Search" aria-label="search"
@@ -10,23 +15,29 @@
         <button id="search-button"><svg-icon icon="search" /></button>
       </form>
 
-      <template v-if="user">
+      <div v-if="user" id="header-buttons">
         <user-profile-menu />
-      </template>
+      </div>
 
-      <template v-else>
+      <div v-else id="header-buttons">
         <button @click="showLogin">Log in</button>
         <button>Register</button>
-      </template>
-    </div>
+      </div>
+    </div></div>
 
     <div class="body">
-      <base-modal v-if="isVisibleLogin" :content="loginForm" @hideModal="hideLogin" />
       <div class="sidebar">
         <ul>
-          <li><router-link :to="{ name: 'Home' }">Questions</router-link></li>
-          <li>Tags</li>
-          <li>Users</li>
+          <li>
+            <router-link
+              :to="{ name: 'Home' }"
+              :class="{ exact: $route.name === 'Home'}"
+            >
+              Questions
+            </router-link>
+          </li>
+          <li><a>Tags</a></li>
+          <li><a>Users</a></li>
         </ul>
       </div>
       <div class="content">
@@ -36,8 +47,6 @@
         <div class="article">
           <slot name="article"></slot>
         </div>
-      </div>
-      <div class="sidebar">
       </div>
     </div>
 
@@ -77,4 +86,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="@/css/base.scss"></style>
+<style lang="scss">
+@import "@/css/_variables.scss";
+@import "@/css/base.scss";
+</style>

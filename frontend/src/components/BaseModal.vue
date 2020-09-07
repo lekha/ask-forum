@@ -28,6 +28,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/css/_variables.scss";
+
 .modal-background {
   position: absolute;
   z-index: 1;
@@ -42,7 +44,7 @@ export default {
 
 .modal {
   background-color: #fff;
-  border: 1px solid var(--primary-dark);
+  border: 1px solid $primary-dark;
   border-radius: 5px;
   margin: auto;
   margin-top: 100px;

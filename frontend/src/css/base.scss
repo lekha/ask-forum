@@ -1,16 +1,5 @@
-:root {
-  --primary-pale: #fafafa;
-  --primary-lightest: #f3f3f3;
-  --primary-lighter: #dcdcdc;
-  --primary-light: #d3d3d3;
-  --primary-neutral: #c0c0c0;
-  --primary-dark: #a9a9a9;
-  --primary-darker: #808080;
-  --primary-darkest: #696969;
-}
-
 body {
-  background-color: var(--primary-pale);
+  background-color: $primary-pale;
   margin: 0;
   padding: 0;
 }
@@ -19,39 +8,78 @@ h2 {
   margin: 0;
 }
 
+.header-wrapper {
+  background-color: $primary-lighter;
+  box-shadow: 0 5px 5px -5px $primary-darker;
+}
+
 .header {
   align-items: center;
-  background-color: var(--primary-lighter);
-  box-shadow: 0 5px 5px -5px var(--primary-darker);
   display: flex;
-  padding: 0 15px;
+  margin: 0 $side-margin-min-width;
 }
 
 .header > * {
   display: inline-block;
-  margin: 15px;
+  margin: 15px 0;
+}
+
+#header-title {
+  // TODO: handle phone case
+  @include respond-to(tablet) {
+    @include gutters(8, $right-only: true);
+    width: grid-width(2, 8);
+  }
+
+  @include respond-to(desktop) {
+    @include gutters(12, $right-only: true);
+    width: grid-width(3, 12);
+  }
 }
 
 #search-form {
   align-items: stretch;
   display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
+
+  // TODO: handle phone case
+  @include respond-to(tablet) {
+    @include gutters(8);
+    flex-grow: 1;
+  }
+
+  @include respond-to(desktop) {
+    @include gutters(12);
+    width: grid-width(6, 12);
+  }
 }
 
 #search-bar {
-  border: 1px solid var(--primary-dark);
+  border: 1px solid $primary-dark;
   border-right: none;
   border-radius: 3px 0 0 3px;
+  flex-grow: 1;
   padding: 5px;
-  width: 75%;
 }
 
 #search-button {
-  border: 1px solid var(--primary-dark);
+  border: 1px solid $primary-dark;
   border-left: none;
   border-radius: 0 3px 3px 0;
   padding: 7px 12px; /* reduce button padding to account for border */
+}
+
+#header-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  // TODO: handle phone case
+  @include respond-to(tablet) {
+    @include gutters(8, $left-only: true);
+  }
+
+  @include respond-to(desktop) {
+    flex-grow: 1;
+  }
 }
 
 #profile-button {
@@ -83,26 +111,56 @@ h2 {
 .body {
   position: relative;
   display: flex;
-  justify-content: center;
+  margin-left: side-margin();
+  margin-right: side-margin();
+
+  @include respond-to(desktop) {
+    margin-left: side-margin(1, 12);
+    margin-right: side-margin(3, 12);
+  }
 }
 
 .sidebar {
-  margin-top: 30px;  /* equals .title margin-top */
-  width: 150px;
+  padding-top: 30px;
+
+  @include gutters(8, $right-only: true);
+  width: grid-width(2, 8);
+
+  @include respond-to(phone) {
+    display: none;
+  }
 }
 
 .sidebar > ul {
   list-style-type: none;
-  margin: 0 15px;
+  margin: 0;
   padding: 0;
-}
 
-.sidebar ul li + li {
-  margin: 15px 0;
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  li > * {
+    display: block;
+    padding: 15px 30px;
+  }
+
+  .router-link-active.exact {
+    background-color: $primary-light;
+    color: #000;
+    display: block;
+  }
 }
 
 .content {
-  width: 500px;
+  @include gutters(8, $left-only: true);
+  width: grid-width(6, 8);
+
+  @include respond-to(phone) {
+    margin: 0;  /* remove gutters */
+    width: 100%;
+  }
 }
 
 .title {
@@ -111,29 +169,29 @@ h2 {
 }
 
 a {
-  color: var(--primary-darkest);
+  color: $primary-darkest;
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--primary-dark);
+  color: $primary-dark;
 }
 
 button {
-  background-color: var(--primary-darker);
+  background-color: $primary-darker;
   border: none;
   border-radius: 3px;
-  color: var(--primary-lighter);
+  color: $primary-lighter;
   padding: 8px 12px;
 }
 
 button:focus, button:hover {
-  background-color: var(--primary-dark);
-  box-shadow: -1px 1px 1px var(--primary-neutral);
+  background-color: $primary-dark;
+  box-shadow: -1px 1px 1px $primary-neutral;
   cursor: pointer;
   outline: none;
 }
 
 button:active {
-  background-color: var(--primary-darkest);
+  background-color: $primary-darkest;
 }
