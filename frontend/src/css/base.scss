@@ -146,7 +146,7 @@ h2 {
     padding: 15px 30px;
   }
 
-  .router-link-exact-active {
+  .router-link-active.exact {
     background-color: $primary-light;
     color: #000;
     display: block;

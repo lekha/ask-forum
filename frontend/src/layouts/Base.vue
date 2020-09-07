@@ -28,7 +28,14 @@
     <div class="body">
       <div class="sidebar">
         <ul>
-          <li><router-link :to="{ name: 'Home' }">Questions</router-link></li>
+          <li>
+            <router-link
+              :to="{ name: 'Home' }"
+              :class="{ exact: $route.name === 'Home'}"
+            >
+              Questions
+            </router-link>
+          </li>
           <li><a>Tags</a></li>
           <li><a>Users</a></li>
         </ul>
