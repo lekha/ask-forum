@@ -9,6 +9,11 @@
       <li><a>Tags</a></li>
       <li><a>Users</a></li>
     </ul>
+    <ul>
+      <li><a>Answer</a></li>
+      <li><a>Review</a></li>
+      <li><a>Publish</a></li>
+    </ul>
   </div>
 </template>
 
@@ -43,6 +48,7 @@ export default {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  padding-bottom: 15px;
 
   li {
     margin: 0;
@@ -59,5 +65,10 @@ export default {
     color: #000;
     display: block;
   }
+}
+
+.sidebar > ul + ul {
+  border-top: 1px solid $primary-light;
+  padding-top: 15px;
 }
 </style>
