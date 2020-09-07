@@ -1,5 +1,7 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
+import Answer from "@/views/Answer.vue"
+import Answers from "@/views/Answers.vue"
 import Home from "@/views/Home.vue"
 import Question from "@/views/Question.vue"
 
@@ -36,6 +38,16 @@ const routes = [
         shortDescription: route.params.shortDescription,
       }
     },
+  },
+  {
+    path: "/questions/unanswered",
+    name: "Answers",
+    component: Answers,
+  },
+  {
+    path: "/questions/:id/answer",
+    name: "Answer",
+    component: Answer,
   },
 ]
 

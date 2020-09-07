@@ -10,7 +10,11 @@
       <li><a>Users</a></li>
     </ul>
     <ul v-if="roleCanEdit">
-      <li><a>Answer</a></li>
+      <li>
+        <router-link :to="{ name: 'Answers' }" :class="routeClass('Answers')">
+          Answer
+        </router-link>
+      </li>
       <li><a>Review</a></li>
       <li v-if="roleCanPublish"><a>Publish</a></li>
     </ul>
