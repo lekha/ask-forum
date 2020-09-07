@@ -9,17 +9,20 @@
       <li><a>Tags</a></li>
       <li><a>Users</a></li>
     </ul>
-    <ul>
+    <ul v-if="roleCanEdit">
       <li><a>Answer</a></li>
       <li><a>Review</a></li>
-      <li><a>Publish</a></li>
+      <li v-if="roleCanPublish"><a>Publish</a></li>
     </ul>
   </div>
 </template>
 
 <script>
+import UserMixin from "@/mixins/user-mixin";
+
 export default {
   name: "NavigationBar",
+  mixins: [UserMixin],
   methods: {
     routeClass(name) {
       return {

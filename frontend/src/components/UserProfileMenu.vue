@@ -20,18 +20,14 @@
 
 <script>
 import BaseDropDown from "@/components/BaseDropDown.vue";
+import UserMixin from "@/mixins/user-mixin";
 
 export default {
   name: "UserProfileMenu",
   components: {
     "base-drop-down": BaseDropDown,
   },
-  computed: {
-    role() {
-      var user = this.$cookies.get("user");
-      return (user ? user.role : null);
-    },
-  },
+  mixins: [UserMixin],
   methods: {
     logout() {
       this.$cookies.remove("user");

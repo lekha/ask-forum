@@ -44,6 +44,7 @@
 import BaseModal from "@/components/BaseModal.vue";
 import LoginForm from "@/components/LoginForm.vue";
 import NavigationBar from "@/components/NavigationBar.vue";
+import UserMixin from "@/mixins/user-mixin";
 import UserProfileMenu from "@/components/UserProfileMenu.vue";
 
 export default {
@@ -53,16 +54,12 @@ export default {
     "navigation-bar": NavigationBar,
     "user-profile-menu": UserProfileMenu,
   },
+  mixins: [UserMixin],
   data() {
     return {
       isVisibleLogin: false,
       loginForm: LoginForm,
     }
-  },
-  computed: {
-    user() {
-      return this.$cookies.get("user");
-    },
   },
   methods: {
     hideLogin() {
