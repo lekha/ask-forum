@@ -73,6 +73,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/css/_variables.scss";
-@import "@/css/base.scss";
+@use "@/css/base";
 </style>

@@ -38,15 +38,15 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/css/_variables.scss";
+@use "@/css/_variables" as _var;
 
 .sidebar {
   padding-top: 30px;
 
-  @include gutters(8, $right-only: true);
-  width: grid-width(2, 8);
+  @include _var.gutters(8, $right-only: true);
+  width: _var.grid-width(2, 8);
 
-  @include respond-to(phone) {
+  @include _var.respond-to(phone) {
     display: none;
   }
 }
@@ -68,14 +68,14 @@ export default {
   }
 
   .router-link-active.exact {
-    background-color: $primary-light;
+    background-color: _var.$primary-light;
     color: #000;
     display: block;
   }
 }
 
 .sidebar > ul + ul {
-  border-top: 1px solid $primary-light;
+  border-top: 1px solid _var.$primary-light;
   padding-top: 15px;
 }
 </style>

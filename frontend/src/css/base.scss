@@ -1,5 +1,7 @@
+@use "@/css/_variables" as _var;
+
 body {
-  background-color: $primary-pale;
+  background-color: _var.$primary-pale;
   margin: 0;
   padding: 0;
 }
@@ -9,14 +11,14 @@ h2 {
 }
 
 .header-wrapper {
-  background-color: $primary-lighter;
-  box-shadow: 0 5px 5px -5px $primary-darker;
+  background-color: _var.$primary-lighter;
+  box-shadow: 0 5px 5px -5px _var.$primary-darker;
 }
 
 .header {
   align-items: center;
   display: flex;
-  margin: 0 $side-margin-min-width;
+  margin: 0 _var.$side-margin-min-width;
 }
 
 .header > * {
@@ -26,14 +28,14 @@ h2 {
 
 #header-title {
   // TODO: handle phone case
-  @include respond-to(tablet) {
-    @include gutters(8, $right-only: true);
-    width: grid-width(2, 8);
+  @include _var.respond-to(tablet) {
+    @include _var.gutters(8, $right-only: true);
+    width: _var.grid-width(2, 8);
   }
 
-  @include respond-to(desktop) {
-    @include gutters(12, $right-only: true);
-    width: grid-width(3, 12);
+  @include _var.respond-to(desktop) {
+    @include _var.gutters(12, $right-only: true);
+    width: _var.grid-width(3, 12);
   }
 }
 
@@ -42,19 +44,19 @@ h2 {
   display: flex;
 
   // TODO: handle phone case
-  @include respond-to(tablet) {
-    @include gutters(8);
+  @include _var.respond-to(tablet) {
+    @include _var.gutters(8);
     flex-grow: 1;
   }
 
-  @include respond-to(desktop) {
-    @include gutters(12);
-    width: grid-width(6, 12);
+  @include _var.respond-to(desktop) {
+    @include _var.gutters(12);
+    width: _var.grid-width(6, 12);
   }
 }
 
 #search-bar {
-  border: 1px solid $primary-dark;
+  border: 1px solid _var.$primary-dark;
   border-right: none;
   border-radius: 3px 0 0 3px;
   flex-grow: 1;
@@ -62,7 +64,7 @@ h2 {
 }
 
 #search-button {
-  border: 1px solid $primary-dark;
+  border: 1px solid _var.$primary-dark;
   border-left: none;
   border-radius: 0 3px 3px 0;
   padding: 7px 12px; /* reduce button padding to account for border */
@@ -73,11 +75,11 @@ h2 {
   justify-content: flex-end;
 
   // TODO: handle phone case
-  @include respond-to(tablet) {
-    @include gutters(8, $left-only: true);
+  @include _var.respond-to(tablet) {
+    @include _var.gutters(8, $left-only: true);
   }
 
-  @include respond-to(desktop) {
+  @include _var.respond-to(desktop) {
     flex-grow: 1;
   }
 }
@@ -111,20 +113,20 @@ h2 {
 .body {
   position: relative;
   display: flex;
-  margin-left: side-margin();
-  margin-right: side-margin();
+  margin-left: _var.side-margin();
+  margin-right: _var.side-margin();
 
-  @include respond-to(desktop) {
-    margin-left: side-margin(1, 12);
-    margin-right: side-margin(3, 12);
+  @include _var.respond-to(desktop) {
+    margin-left: _var.side-margin(1, 12);
+    margin-right: _var.side-margin(3, 12);
   }
 }
 
 .content {
-  @include gutters(8, $left-only: true);
-  width: grid-width(6, 8);
+  @include _var.gutters(8, $left-only: true);
+  width: _var.grid-width(6, 8);
 
-  @include respond-to(phone) {
+  @include _var.respond-to(phone) {
     margin: 0;  /* remove gutters */
     width: 100%;
   }
@@ -136,29 +138,29 @@ h2 {
 }
 
 a {
-  color: $primary-darkest;
+  color: _var.$primary-darkest;
   text-decoration: none;
 }
 
 a:hover {
-  color: $primary-dark;
+  color: _var.$primary-dark;
 }
 
 button {
-  background-color: $primary-darker;
+  background-color: _var.$primary-darker;
   border: none;
   border-radius: 3px;
-  color: $primary-lighter;
+  color: _var.$primary-lighter;
   padding: 8px 12px;
 }
 
 button:focus, button:hover {
-  background-color: $primary-dark;
-  box-shadow: -1px 1px 1px $primary-neutral;
+  background-color: _var.$primary-dark;
+  box-shadow: -1px 1px 1px _var.$primary-neutral;
   cursor: pointer;
   outline: none;
 }
 
 button:active {
-  background-color: $primary-darkest;
+  background-color: _var.$primary-darkest;
 }
