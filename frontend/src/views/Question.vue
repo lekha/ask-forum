@@ -3,16 +3,19 @@
 
     <template v-slot:title>
       <div class="container">
-        <h2>{{ title }}</h2>
+        <h2 v-if="isPageReady">{{ question.title }}</h2>
         <ask-question-button />
       </div>
-      <div>Asked {{ createdDate }}</div>
+      <div v-if="isPageReady">Asked {{ question.createdDate }}</div>
     </template>
 
     <template v-slot:article>
       <div class="question">
-        <p>{{ description }}</p>
-        <tag v-for="tag in tags" :key="tag.id" :text="tag.text" />
+        <template v-if="isPageReady">
+          <p>{{ question.description }}</p>
+          <tag v-for="tag in question.tags" :key="tag.id" :text="tag.text" />
+        </template>
+        <loading-icon v-else />
       </div>
     </template>
 
@@ -20,6 +23,7 @@
 </template>
 
 <script>
+import { api } from "@/api";
 import AskQuestionButton from "@/components/AskQuestionButton";
 import Base from "@/layouts/Base";
 import Tag from "@/components/Tag";
@@ -37,35 +41,22 @@ export default {
   },
   data() {
     return {
-      createdDate: "2020-08-11",
-      tags: [
-        {
-          id: 0,
-          text: "tag1",
-        },
-        {
-          id: 1,
-          text: "tag2",
-        },
-      ],
+      question: null,
+      isPageReady: false,
     }
   },
-  computed: {
-    description() {
-      return "Question " + this.id + " description";
-    },
-    title() {
-      return "Question " + this.id + " title";
-    },
-  },
   created() {
-    this.addShortDescriptionToURL();
+    api.getQuestion(this.id).then((response) => {
+      this.question = response;
+      this.addShortDescriptionToURL();
+      this.isPageReady = true;
+    });
   },
   methods: {
     addShortDescriptionToURL() {
       const maxURLLength = 300;  // arbitrarily chosen
       const expectedDescription =
-        this.convertToKebabCase(this.title).substring(0, maxURLLength);
+        this.convertToKebabCase(this.question.title).substring(0, maxURLLength);
       if (this.shortDescription != expectedDescription) {
         this.$router.replace({
           name: "QuestionWithFullURL",

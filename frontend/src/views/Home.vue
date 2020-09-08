@@ -10,16 +10,21 @@
     </template>
 
     <template v-slot:article>
-      <div v-for="question in questions" :key="question.id" class="question">
-        <h3>
-          <router-link
-            :to="{ name: 'Question', params: { id: question.id } }"
-          >
-            {{ question.title }}
-          </router-link>
-        </h3>
-        <p>{{ question.description }}</p>
-        <tag v-for="tag in question.tags" :key="tag.id" :text="tag.text" />
+      <template v-if="isPageReady">
+        <div v-for="question in questions" :key="question.id" class="question">
+          <h3>
+            <router-link
+              :to="{ name: 'Question', params: { id: question.id } }"
+            >
+              {{ question.title }}
+            </router-link>
+          </h3>
+          <p>{{ question.description }}</p>
+          <tag v-for="tag in question.tags" :key="tag.id" :text="tag.text" />
+        </div>
+      </template>
+      <div v-else class="question">
+        <loading-icon />
       </div>
     </template>
 
@@ -27,6 +32,7 @@
 </template>
 
 <script>
+import { api } from "@/api";
 import AskQuestionButton from "@/components/AskQuestionButton";
 import Base from "@/layouts/Base";
 import Tag from "@/components/Tag";
@@ -40,37 +46,17 @@ export default {
   },
   data() {
     return {
+      isPageReady: false,
       numQuestions: 1000,
-      questions: [
-        {
-          id: 0,
-          title: "Question 0 title",
-          description: "Question 0 description",
-          tags: [
-            {
-              id: 0,
-              text: "tag1",
-            },
-            {
-              id: 1,
-              text: "tag2",
-            },
-          ],
-        },
-        {
-          id: 1,
-          title: "Question 1 title",
-          description: "Question 1 description",
-          tags: [
-            {
-              id: 1,
-              text: "tag2",
-            },
-          ],
-        },
-      ],
+      questions: [],
     }
-  }
+  },
+  created() {
+    api.listQuestions().then((response) => {
+      this.questions = response;
+      this.isPageReady = true;
+    });
+  },
 }
 </script>
 
