@@ -29,22 +29,27 @@ import Base from "@/layouts/Base";
 import Tag from "@/components/Tag";
 
 export default {
+
   name: "Question",
+
   components: {
     "ask-question-button": AskQuestionButton,
     "base-layout": Base,
     "tag": Tag,
   },
+
   props: {
     id: Number,
     shortDescription: String,
   },
+
   data() {
     return {
       question: null,
       isPageReady: false,
     }
   },
+
   created() {
     api.getQuestion(this.id).then((response) => {
       this.question = response;
@@ -52,6 +57,7 @@ export default {
       this.isPageReady = true;
     });
   },
+
   methods: {
     addShortDescriptionToURL() {
       const maxURLLength = 300;  // arbitrarily chosen
@@ -64,6 +70,7 @@ export default {
         });
       }
     },
+
     convertToKebabCase(inputString) {
       // Shamelessly borrowed and adapted from here:
       // https://gist.github.com/thevangelist/8ff91bac947018c9f3bfaad6487fa149

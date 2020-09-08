@@ -16,30 +16,36 @@
 <script>
 export default {
   name: "BaseDropDown",
+
   props: {
     isRightAligned: {
       type: Boolean,
       default: false,
     },
   },
+
   data() {
     return {
       isVisibleDropDown: false,
     }
   },
+
   methods: {
     toggleDropDown() {
       this.isVisibleDropDown = !this.isVisibleDropDown;
     },
+
     closeDropDown(event) {
       if (!this.$el.contains(event.target)) {
         this.isVisibleDropDown = false;
       }
     },
   },
+
   mounted() {
     document.addEventListener("click", this.closeDropDown);
   },
+
   beforeDestroy() {
     document.removeEventListener("click", this.closeDropDown);
   },

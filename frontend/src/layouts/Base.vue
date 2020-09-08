@@ -49,22 +49,27 @@ import UserProfileMenu from "@/components/UserProfileMenu";
 
 export default {
   name: "Base",
+
   components: {
     "base-modal": BaseModal,
     "navigation-bar": NavigationBar,
     "user-profile-menu": UserProfileMenu,
   },
+
   mixins: [UserMixin],
+
   data() {
     return {
       isVisibleLogin: false,
       loginForm: LoginForm,
     }
   },
+
   methods: {
     hideLogin() {
       this.isVisibleLogin = false;
     },
+
     showLogin() {
       this.isVisibleLogin = true;
     },

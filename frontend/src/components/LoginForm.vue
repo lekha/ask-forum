@@ -50,6 +50,7 @@
 <script>
 export default {
   name: "LoginForm",
+
   data() {
     return {
       hasAttemptedSubmit: false,
@@ -57,6 +58,7 @@ export default {
       role: null,
     }
   },
+
   computed: {
     isValidForm: function() {
       return this.isValidRole;
@@ -65,6 +67,7 @@ export default {
       return this.role != null;
     },
   },
+
   methods: {
     login(event) {
       this.hasAttemptedSubmit = true;

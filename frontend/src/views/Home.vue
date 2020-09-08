@@ -39,11 +39,13 @@ import Tag from "@/components/Tag";
 
 export default {
   name: "Home",
+
   components: {
     "ask-question-button": AskQuestionButton,
     "base-layout": Base,
     "tag": Tag,
   },
+
   data() {
     return {
       isPageReady: false,
@@ -51,6 +53,7 @@ export default {
       questions: [],
     }
   },
+
   created() {
     api.listQuestions().then((response) => {
       this.questions = response;

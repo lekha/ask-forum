@@ -17,6 +17,7 @@ import Base from "@/layouts/Base";
 
 export default {
   name: "Answers",
+
   components: {
     "base-layout": Base,
   },

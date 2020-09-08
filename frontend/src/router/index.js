@@ -5,9 +5,7 @@ import Question from "@/views/Question";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-
-Vue.use(VueRouter)
-
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -15,6 +13,7 @@ const routes = [
     name: "Home",
     component: Home
   },
+
   {
     path: "/questions/:id",
     name: "Question",
@@ -27,6 +26,7 @@ const routes = [
       }
     },
   },
+
   {
     path: "/questions/:id/:shortDescription",
     component: Question,
@@ -39,11 +39,13 @@ const routes = [
       }
     },
   },
+
   {
     path: "/questions/unanswered",
     name: "Answers",
     component: Answers,
   },
+
   {
     path: "/questions/:id/answer",
     name: "Answer",
@@ -51,12 +53,8 @@ const routes = [
   },
 ]
 
-
-const router = new VueRouter({
+export default new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
 })
-
-
-export default router

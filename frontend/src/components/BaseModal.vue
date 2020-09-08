@@ -14,9 +14,11 @@
 <script>
 export default {
   name: "BaseModal",
+
   props: {
     content: Object,
   },
+
   methods: {
     hideModal(event) {
       if (event.currentTarget == event.target) {
