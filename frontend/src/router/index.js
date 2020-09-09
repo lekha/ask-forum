@@ -1,6 +1,7 @@
 import Answer from "@/views/Answer";
 import Answers from "@/views/Answers";
 import Home from "@/views/Home";
+import PageNotFound from "@/views/PageNotFound";
 import Question from "@/views/Question";
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -50,6 +51,12 @@ const routes = [
     path: "/questions/:id/answer",
     name: "Answer",
     component: Answer,
+  },
+
+  {
+    path: "*",
+    name: "PageNotFound",
+    component: PageNotFound,
   },
 ]
 
