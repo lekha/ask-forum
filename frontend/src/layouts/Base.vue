@@ -8,20 +8,18 @@
 
     <div class="header-wrapper"><div class="header">
       <h1 id="header-title">Project Name</h1>
-      <form id="search-form" role="search">
-        <input
-          id="search-bar" type="search" placeholder="Search" aria-label="search"
-        />
-        <button id="search-button"><svg-icon icon="search" /></button>
-      </form>
+      <div id="header-buttons">
+        <form id="search-form" role="search">
+          <input
+            id="search-bar" type="search" placeholder="Search" aria-label="search"
+          />
+          <button id="search-button"><svg-icon icon="search" /></button>
+        </form>
 
-      <div v-if="user" id="header-buttons">
-        <user-profile-menu />
-      </div>
+        <user-profile-menu v-if="user" />
 
-      <div v-else id="header-buttons">
-        <button @click="showLogin">Log in</button>
-        <button>Register</button>
+        <button v-if="!user" @click="showLogin">Log in</button>
+        <button v-if="!user">Register</button>
       </div>
     </div></div>
 

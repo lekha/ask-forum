@@ -41,10 +41,8 @@ export default {
 @use "@/css/_variables" as _var;
 
 .sidebar {
+  grid-area: sidebar;
   padding-top: 30px;
-
-  @include _var.gutters(8, $right-only: true);
-  width: _var.grid-width(2, 8);
 
   @include _var.respond-to(phone) {
     display: none;
