@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div>
     <ul>
       <li>
         <router-link :to="{ name: 'Home' }" :class="routeClass('Home')">
@@ -39,6 +39,54 @@ export default {
 
 <style lang="scss">
 @use "@/css/_variables" as _var;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+
+  background-color: _var.$primary-darker;
+  box-shadow: 0 -5px 5px -5px _var.$primary-dark;
+  color: #fff;
+  display: none;
+  height: _var.$nav-bar-width;
+  justify-content: stretch;
+  width: 100%;
+
+  @include _var.respond-to(phone) {
+    display: flex;
+  }
+
+  a {
+    color: #fff;
+  }
+
+  a:hover, a:focus, a:active {
+    color: _var.$primary-lighter;
+  }
+}
+
+.footer > ul {
+  display: flex;
+  flex-basis: 0;
+  flex-grow: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  :nth-child(n+3) {
+    display: none;
+  }
+
+  li {
+    display: flex;
+    flex-basis: 0;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+  }
+}
 
 .sidebar {
   grid-area: sidebar;

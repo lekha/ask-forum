@@ -10,9 +10,26 @@ h2 {
   margin: 0;
 }
 
+.base {
+  @include _var.respond-to(phone) {
+    display: grid;
+    height: calc(100vh - #{_var.$nav-bar-width});
+    grid-template-areas:
+      "header"
+      "body"
+      "footer";
+    grid-template-rows: _var.$nav-bar-width 1fr _var.$nav-bar-width;
+    overflow-y: scroll;
+  }
+}
+
 .header-wrapper {
   background-color: _var.$primary-lighter;
   box-shadow: 0 5px 5px -5px _var.$primary-darker;
+
+  @include _var.respond-to(phone) {
+    grid-area: header;
+  }
 }
 
 .header {
@@ -115,6 +132,7 @@ h2 {
   margin: 0 _var.$side-margin-min-width;
 
   @include _var.respond-to(phone) {
+    grid-area: body;
     grid-template-areas: "content";
     grid-template-columns: 1fr;
   }
