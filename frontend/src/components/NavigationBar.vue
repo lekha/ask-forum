@@ -1,23 +1,35 @@
 <template>
-  <div>
-    <ul>
-      <li>
-        <router-link :to="{ name: 'Home' }" :class="routeClass('Home')">
-          Questions
-        </router-link>
-      </li>
-      <li><a>Tags</a></li>
-      <li><a>Users</a></li>
-    </ul>
-    <ul v-if="roleCanEdit">
-      <li>
-        <router-link :to="{ name: 'Answers' }" :class="routeClass('Answers')">
-          Answer
-        </router-link>
-      </li>
-      <li><a>Review</a></li>
-      <li v-if="roleCanPublish"><a>Publish</a></li>
-    </ul>
+  <div :class="type">
+    <template v-if="type == 'sidebar'" >
+      <ul>
+        <li>
+          <router-link :to="{ name: 'Home' }" :class="routeClass('Home')">
+            Questions
+          </router-link>
+        </li>
+        <li><a>Tags</a></li>
+        <li><a>Users</a></li>
+      </ul>
+      <ul v-if="roleCanEdit">
+        <li>
+          <router-link :to="{ name: 'Answers' }" :class="routeClass('Answers')">
+            Answer
+          </router-link>
+        </li>
+        <li><a>Review</a></li>
+        <li v-if="roleCanPublish"><a>Publish</a></li>
+      </ul>
+    </template>
+    <template v-else>
+      <ul>
+        <li>
+          <router-link :to="{ name: 'Home' }" :class="routeClass('Home')">
+            Browse
+          </router-link>
+        </li>
+        <li><a>Other</a></li>
+      </ul>
+    </template>
   </div>
 </template>
 
@@ -27,6 +39,12 @@ import UserMixin from "@/mixins/user-mixin";
 export default {
   name: "NavigationBar",
   mixins: [UserMixin],
+  props: {
+    type: {
+      type: String,
+      default: "sidebar",
+    },
+  },
   methods: {
     routeClass(name) {
       return {
@@ -73,10 +91,6 @@ export default {
   list-style-type: none;
   margin: 0;
   padding: 0;
-
-  :nth-child(n+3) {
-    display: none;
-  }
 
   li {
     display: flex;

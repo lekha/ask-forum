@@ -23,9 +23,9 @@
       </div>
     </div></div>
 
-    <navigation-bar class="footer" />
+    <navigation-bar type="footer" />
     <div class="body">
-      <navigation-bar class="sidebar" />
+      <navigation-bar type="sidebar" />
       <div class="content">
         <div class="title">
           <slot name="title"></slot>
